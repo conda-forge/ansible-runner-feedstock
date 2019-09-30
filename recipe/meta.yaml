@@ -41,7 +41,8 @@ test:
     - ansible_runner
   commands:
     - cd src/test/unit
-    - pytest --cov ansible_runner -vv
+    - pytest --cov ansible_runner -vv -k "not test_env_vars"  # [osx]
+    - pytest --cov ansible_runner -vv  # [linux]
 
 about:
   home: https://github.com/ansible/ansible-runner
