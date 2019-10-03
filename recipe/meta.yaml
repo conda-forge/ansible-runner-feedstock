@@ -8,7 +8,7 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: 60c9a8e566915cbc69a9a3d22b4529f8ed7256d24b9dcce93eaaed7369d978db
+    sha256: 24cc5bea784f7467a7f4c59c29ea37321e29ee604022d17634028ce4a38e72c8
   - folder: src
     url: https://github.com/ansible/{{ name }}/archive/{{ version }}.tar.gz
     sha256: 60c9a8e566915cbc69a9a3d22b4529f8ed7256d24b9dcce93eaaed7369d978db
