@@ -1,5 +1,5 @@
 {% set name = "ansible-runner" %}
-{% set version = "1.4.2" %}
+{% set version = "1.4.4" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: 9db56a69ad5d43fe7656ad8efb4083cb1800ea400f7828af6b20f44c0882404f
+    sha256: 46f4bb39f98d53a82265e8439a4e4020016b3493982ec3cbee73a42627218b8c
   - folder: src
     url: https://github.com/ansible/{{ name }}/archive/{{ version }}.tar.gz
-    sha256: 5867921bf9be46ab4fc06a47ea52b9ffa732b82865367c7b3be3efadf29e43eb
+    sha256: 46f4bb39f98d53a82265e8439a4e4020016b3493982ec3cbee73a42627218b8c
 
 build:
   skip: true  # [win]
