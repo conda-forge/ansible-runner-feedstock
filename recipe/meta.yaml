@@ -8,7 +8,7 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: 46f4bb39f98d53a82265e8439a4e4020016b3493982ec3cbee73a42627218b8c
+    sha256: e6ccb7ccf9bab9c49a391db37e0d399ba0e73f969801ae35ff74020bfd4fc346
   - folder: src
     url: https://github.com/ansible/{{ name }}/archive/{{ version }}.tar.gz
     sha256: 46f4bb39f98d53a82265e8439a4e4020016b3493982ec3cbee73a42627218b8c
@@ -17,6 +17,8 @@ build:
   skip: true  # [win]
   number: 0
   script: "cd dist && {{ PYTHON }} -m pip install . -vv"
+  entry_points:
+    - ansible-runner = ansible_runner.__main__:main
 
 requirements:
   host:
