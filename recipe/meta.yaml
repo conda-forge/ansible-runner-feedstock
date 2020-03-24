@@ -14,7 +14,6 @@ source:
     sha256: aca5151a007b9aa18aa1d7387868c56d3056f0ee294ac023cd835b97d0c51df8
 
 build:
-  skip: true  # [win]
   number: 0
   noarch: python
   script: cd dist && {{ PYTHON }} -m pip install . -vv
