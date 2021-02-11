@@ -5,7 +5,7 @@ Home: https://github.com/ansible/ansible-runner
 
 Package license: Apache-2.0
 
-Feedstock license: BSD 3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ansible-runner-feedstock/blob/master/LICENSE.txt)
 
 Summary: A tool and python library that helps when interfacing with Ansible directly
 or as part of another system whether that be through a container image
@@ -14,7 +14,7 @@ imported. The goal is to provide a stable and consistent interface
 abstraction to Ansible.
 
 
-
+Documentation: https://ansible-runner.readthedocs.io
 
 Current build status
 ====================
