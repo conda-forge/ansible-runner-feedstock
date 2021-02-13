@@ -23,11 +23,10 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python >=3.6
   run:
     - pexpect >=4.5
-    - psutil
-    - python
+    - python >=3.6
     - python-daemon
     - pyyaml
     - six
