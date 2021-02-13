@@ -26,6 +26,7 @@ requirements:
     - python >=3.6
   run:
     - pexpect >=4.5
+    - psutil
     - python >=3.6
     - python-daemon
     - pyyaml
