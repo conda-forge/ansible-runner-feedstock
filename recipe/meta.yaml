@@ -24,9 +24,9 @@ requirements:
   host:
     - pip
     - python >=3.6
+    - pbr
   run:
     - pexpect >=4.5
-    - psutil
     - python >=3.6
     - python-daemon
     - pyyaml
