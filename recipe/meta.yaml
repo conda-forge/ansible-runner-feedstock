@@ -40,6 +40,7 @@ test:
     - pytest-cov
     - mock
     - pip
+    - ansible
   imports:
     - ansible_runner
   commands:
