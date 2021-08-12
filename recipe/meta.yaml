@@ -37,10 +37,11 @@ test:
   source_files:
     - src/test/unit
   requires:
-    - pytest
-    - pytest-cov
+    - ansible
     - mock
     - pip
+    - pytest
+    - pytest-cov
   imports:
     - ansible_runner
   commands:
