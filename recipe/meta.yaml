@@ -50,7 +50,7 @@ test:
     - ansible-runner --help
     - cd src/test/unit
     - pytest --cov ansible_runner -vv -k "not (test_env_vars or containerization)"  # [osx]
-    - pytest --cov ansible_runner -vv -k "not containerization" # [linux]
+    - pytest --cov ansible_runner -vv -k "not containerization"  # [linux]
 
 about:
   home: https://github.com/ansible/ansible-runner
