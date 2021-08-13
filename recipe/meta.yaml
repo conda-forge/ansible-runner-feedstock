@@ -42,6 +42,7 @@ test:
     - pip
     - pytest
     - pytest-cov
+    - pytest-timeout
   imports:
     - ansible_runner
   commands:
