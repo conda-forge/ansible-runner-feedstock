@@ -37,12 +37,13 @@ test:
   source_files:
     - src/test/unit
   requires:
+    # from /test/requirements.txt
     - ansible
-    - mock
     - pip
     - pytest
     - pytest-cov
     - pytest-timeout
+    - pytest-mock
   imports:
     - ansible_runner
   commands:
