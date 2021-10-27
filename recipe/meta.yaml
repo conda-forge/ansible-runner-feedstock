@@ -50,7 +50,7 @@ test:
     - ansible-runner --version
     - ansible-runner --help
     - cd src/test/unit
-    - pytest --cov ansible_runner -vv -k "not (containerization or env_vars or prepare_env_sshkey)"
+    - pytest --cov ansible_runner -vv -k "not (containerization or env_vars or prepare_env_sshkey or container_volmount)" --cov-report term-missing:skip-covered --no-cov-on-fail
 
 about:
   home: https://github.com/ansible/ansible-runner
