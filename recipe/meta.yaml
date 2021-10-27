@@ -1,5 +1,5 @@
 {% set name = "ansible-runner" %}
-{% set version = "2.0.2" %}
+{% set version = "2.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: c02b690803ec0be4453411c53743cd3fdca1dfc66dfa075794e14e717c5b61b3
+    sha256: 8f6be6e2e3150f5ca56e5352ded0e4db6422bbedbd731f3bc15de6c09fa44096
   - folder: src
     url: https://github.com/ansible/{{ name }}/archive/{{ version }}.tar.gz
-    sha256: 2f16bc2a16edb38e56e79caebb2fe854b57820b35c3ee7c5bfd1d4fffdc87a42
+    sha256: 304884b7f08e1e92e951c423144587cac93a3319e7d8fbbe552140e3a84239d9
 
 build:
   number: 0
@@ -37,12 +37,13 @@ test:
   source_files:
     - src/test/unit
   requires:
+    # from /test/requirements.txt
     - ansible
-    - mock
     - pip
     - pytest
     - pytest-cov
     - pytest-timeout
+    - pytest-mock
   imports:
     - ansible_runner
   commands:
@@ -50,7 +51,7 @@ test:
     - ansible-runner --version
     - ansible-runner --help
     - cd src/test/unit
-    - pytest --cov ansible_runner -vv -k "not (containerization or env_vars or prepare_env_sshkey)"
+    - pytest --cov ansible_runner -vv -k "not (containerization or env_vars or prepare_env_sshkey or container_volmount)" --cov-report term-missing:skip-covered --no-cov-on-fail
 
 about:
   home: https://github.com/ansible/ansible-runner
