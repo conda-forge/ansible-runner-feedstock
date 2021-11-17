@@ -38,7 +38,8 @@ test:
     - src/test/unit
   requires:
     # from /test/requirements.txt
-    - ansible !=4.8.0=0,!=4.8.0=1
+    # TODO: unpin after https://github.com/conda-forge/ansible-feedstock/pull/93
+    - ansible <4.8.0  
     - pip
     - pytest
     - pytest-cov
