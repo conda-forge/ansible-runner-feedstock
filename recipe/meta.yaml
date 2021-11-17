@@ -38,9 +38,7 @@ test:
     - src/test/unit
   requires:
     # from /test/requirements.txt
-    - ansible
-    # TODO: remove this, probably
-    - ansible-core >=2.11.6,<2.12
+    - ansible !=4.8.0=0,!=4.8.0=1
     - pip
     - pytest
     - pytest-cov
