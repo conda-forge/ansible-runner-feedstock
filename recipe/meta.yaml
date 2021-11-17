@@ -39,6 +39,8 @@ test:
   requires:
     # from /test/requirements.txt
     - ansible
+    # TODO: remove this, probably
+    - ansible-core >=2.11.6,<2.12
     - pip
     - pytest
     - pytest-cov
