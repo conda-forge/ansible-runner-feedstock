@@ -38,9 +38,9 @@ test:
     - src/test/unit
   requires:
     # from /test/requirements.txt
-    - ansible
+    - ansible >=5.4.0,<5.5.0
     # TODO: unpin after https://github.com/conda-forge/ansible-feedstock/pull/93
-    - ansible-core >=2.11.6,<2.12
+    - ansible-core >=2.12.2,<2.13.0
     - pip
     - pytest
     - pytest-cov
