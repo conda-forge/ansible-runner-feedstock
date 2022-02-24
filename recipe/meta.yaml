@@ -1,5 +1,5 @@
 {% set name = "ansible-runner" %}
-{% set version = "2.1.1" %}
+{% set version = "2.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: 7684612f7543c5f07f3e8135667eeb22a9dbd98f625cc69901ba9924329ef24f
+    sha256: 18afc2aa6326ebb566bf3961315ea8c3ee349b40d85295c21643fef4d811fdee
   - folder: src
     url: https://github.com/ansible/{{ name }}/archive/{{ version }}.tar.gz
-    sha256: 38c3acc1d8947e7ca53fec98105932b1b3ad970ff8b54b60d0b600167dd812c2
+    sha256: 7f4de26c5e7576cf79d84e9b31b60110ee8ac4b90ce1888ac136d465255affba
 
 build:
   number: 0
@@ -33,14 +33,23 @@ requirements:
     - pyyaml
     - six
 
+{% set skips = [
+  "containerization",
+  "env_vars",
+  "prepare_env_sshkey",
+  "container_volmount",
+  "registry_auth_cleanup",
+  "prepare_env_directory_isolation_from_settings",
+] %}
+
 test:
   source_files:
     - src/test/unit
   requires:
     # from /test/requirements.txt
-    - ansible  
+    - ansible >=5.4.0,<5.5.0
     # TODO: unpin after https://github.com/conda-forge/ansible-feedstock/pull/93
-    - ansible-core >=2.11.6,<2.12
+    - ansible-core >=2.12.2,<2.13.0
     - pip
     - pytest
     - pytest-cov
@@ -53,7 +62,7 @@ test:
     - ansible-runner --version
     - ansible-runner --help
     - cd src/test/unit
-    - pytest --cov ansible_runner -vv -k "not (containerization or env_vars or prepare_env_sshkey or container_volmount or registry_auth_cleanup)" --cov-report term-missing:skip-covered --no-cov-on-fail
+    - pytest --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
 
 about:
   home: https://github.com/ansible/ansible-runner
