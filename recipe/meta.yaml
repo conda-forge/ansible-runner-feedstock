@@ -62,7 +62,7 @@ test:
     - ansible-runner --version
     - ansible-runner --help
     - cd src
-    - pytest unit --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
+    - pytest test/unit --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
 
 about:
   home: https://github.com/ansible/ansible-runner
