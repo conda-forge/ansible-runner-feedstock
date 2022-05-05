@@ -51,7 +51,7 @@ test:
     # TODO: unpin after https://github.com/conda-forge/ansible-feedstock/pull/93
     - ansible-core >=2.12.2,<2.13.0
     - pip
-    - pytest <7
+    - pytest
     - pytest-cov
     - pytest-timeout
     - pytest-mock
@@ -61,7 +61,7 @@ test:
     - python -m pip check
     - ansible-runner --version
     - ansible-runner --help
-    - cd src/test/unit
+    - cd src
     - pytest --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
 
 about:
