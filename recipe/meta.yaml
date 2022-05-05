@@ -1,5 +1,5 @@
 {% set name = "ansible-runner" %}
-{% set version = "2.1.3" %}
+{% set version = "2.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,10 +8,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-    sha256: da6e5d0fe8060cbe4b9d8ed06c362219dbb8198bb40b8f56536f46658d9b9c1a
+    sha256: 6fafe0bcfdaa51b58bd3ae9c950a382549f4d9c194350ab135421dbbd0184d98
   - folder: src
     url: https://github.com/ansible/{{ name }}/archive/{{ version }}.tar.gz
-    sha256: 108beb606bcca6fa90882e832075f7a74b9ccf8c2ab1eac73a33d1f2b52a5a87
+    sha256: 17253e32e9f2db1594557b58490671187005c3b3b1def6dd0c9a39adc532036f
 
 build:
   number: 0
@@ -44,7 +44,7 @@ requirements:
 
 test:
   source_files:
-    - src/test/unit
+    - src/test
   requires:
     # from /test/requirements.txt
     - ansible >=5.4.0,<5.5.0
@@ -61,8 +61,8 @@ test:
     - python -m pip check
     - ansible-runner --version
     - ansible-runner --help
-    - cd src/test/unit
-    - pytest --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
+    - cd src
+    - pytest test/unit --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail
 
 about:
   home: https://github.com/ansible/ansible-runner
