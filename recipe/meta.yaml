@@ -51,7 +51,7 @@ test:
     # TODO: unpin after https://github.com/conda-forge/ansible-feedstock/pull/93
     - ansible-core >=2.12.2,<2.13.0
     - pip
-    - pytest
+    - pytest <7
     - pytest-cov
     - pytest-timeout
     - pytest-mock
