@@ -39,6 +39,7 @@ requirements:
   "container_volmount",
   "registry_auth_cleanup",
   "prepare_env_directory_isolation_from_settings",
+  "multiline_blank_write",
 ] %}
 
 test:
