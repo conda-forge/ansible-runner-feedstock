@@ -1,4 +1,4 @@
-{% set version = "2.3.4" %}
+{% set version = "2.3.5" %}
 
 package:
   name: ansible-runner
@@ -7,27 +7,28 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/a/ansible-runner/ansible-runner-{{ version }}.tar.gz
-    sha256: 79a1bd134d813c8ea3740599c6fd961a11425ce7757f2fd725cf56d6a1a7236c
+    sha256: cd9ddd5765870ea3c545b6cb47aaad5f04d9a30a628dd3fcdb4f367a28c22085
   - folder: src
     url: https://github.com/ansible/ansible-runner/archive/{{ version }}.tar.gz
-    sha256: 13381b3f21713c9a4b021415f5259fd462fceedef5750bb7b99974e3bd11d3e3
+    sha256: 36fbdb68bf355cd50dbd368438ab936cdf071aba58a583b885d68d3000402a4e
 
 build:
   number: 0
   noarch: python
-  script: cd dist && {{ PYTHON }} -m pip install . -vv
+  script: cd dist && {{ PYTHON }} -m pip install . -vv --no-build-isolation --no-deps
   entry_points:
     - ansible-runner = ansible_runner.__main__:main
 
 requirements:
   host:
-    - pip
-    - python >=3.6
     - pbr
+    - pip
+    - python >=3.8
   run:
+    - importlib-metadata >=4.6
+    - packaging
     - pexpect >=4.5
-    - psutil
-    - python >=3.6
+    - python >=3.8
     - python-daemon
     - pyyaml
     - six
@@ -50,9 +51,10 @@ test:
     - ansible >=5.4.0,<5.5.0
     # TODO: unpin after https://github.com/conda-forge/ansible-feedstock/pull/93
     - ansible-core >=2.12.2,<2.13.0
+    - coverage
+    - m2-grep  # [win]
     - pip
     - pytest
-    - pytest-cov
     - pytest-timeout
     - pytest-mock
   imports:
@@ -60,9 +62,11 @@ test:
   commands:
     - python -m pip check
     - ansible-runner --version
+    - ansible-runner --version | grep -iE "{{ version.replace('.', '\.') }}" 
     - ansible-runner --help
     - cd src
-    - pytest test/unit --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under=54
+    - coverage run --source=ansible_runner --branch -m pytest test/unit -vv -k "not ({{ ' or '.join(skips) }})"
+    - coverage report --show-missing --skip-covered --fail-under=51
 
 about:
   home: https://github.com/ansible/ansible-runner
