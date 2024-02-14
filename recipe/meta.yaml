@@ -21,18 +21,17 @@ build:
 
 requirements:
   host:
+    - pbr
     - pip
-    - python >=3.9
-    - setuptools_scm >=6.2,<=8.0.4
-    - setuptools >=45,<=69.0.2
+    - python >=3.8
   run:
     - importlib-metadata >=4.6
     - packaging
     - pexpect >=4.5
-    - psutil
-    - python >=3.9
+    - python >=3.8
     - python-daemon
     - pyyaml
+    - six
 
 {% set skips = [
   "containerization",
