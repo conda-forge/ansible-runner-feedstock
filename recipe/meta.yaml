@@ -15,22 +15,24 @@ source:
 build:
   number: 0
   noarch: python
-  script: cd dist && {{ PYTHON }} -m pip install . -vv
+  script: cd dist && {{ PYTHON }} -m pip install . -vv --no-build-isolation --no-deps
   entry_points:
     - ansible-runner = ansible_runner.__main__:main
 
 requirements:
   host:
     - pip
-    - python >=3.6
-    - pbr
+    - python >=3.9
+    - setuptools_scm >=6.2,<=8.0.4
+    - setuptools >=45,<=69.0.2
   run:
+    - importlib-metadata >=4.6
+    - packaging
     - pexpect >=4.5
     - psutil
-    - python >=3.6
+    - python >=3.9
     - python-daemon
     - pyyaml
-    - six
 
 {% set skips = [
   "containerization",
@@ -50,6 +52,7 @@ test:
     - ansible >=5.4.0,<5.5.0
     # TODO: unpin after https://github.com/conda-forge/ansible-feedstock/pull/93
     - ansible-core >=2.12.2,<2.13.0
+    - m2-grep  # [win]
     - pip
     - pytest
     - pytest-cov
@@ -60,6 +63,7 @@ test:
   commands:
     - python -m pip check
     - ansible-runner --version
+    - ansible-runner --version | grep -iE "{{ version.replace('.', '\.') }}" 
     - ansible-runner --help
     - cd src
     - pytest test/unit --cov ansible_runner -vv -k "not ({{ ' or '.join(skips) }})" --cov-report term-missing:skip-covered --no-cov-on-fail --cov-fail-under=54
