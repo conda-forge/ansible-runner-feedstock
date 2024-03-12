@@ -1,4 +1,4 @@
-{% set version = "2.3.5" %}
+{% set version = "2.3.6" %}
 
 package:
   name: ansible-runner
@@ -7,10 +7,10 @@ package:
 source:
   - folder: dist
     url: https://pypi.io/packages/source/a/ansible-runner/ansible-runner-{{ version }}.tar.gz
-    sha256: cd9ddd5765870ea3c545b6cb47aaad5f04d9a30a628dd3fcdb4f367a28c22085
+    sha256: b2174a12dcad2dc2f342ea82876898f568a0b66c53568600bf80577158fcba1c
   - folder: src
     url: https://github.com/ansible/ansible-runner/archive/{{ version }}.tar.gz
-    sha256: 36fbdb68bf355cd50dbd368438ab936cdf071aba58a583b885d68d3000402a4e
+    sha256: d81a1fcfe79177f1455c580a7485f68cfbefd776a0db78efa7ba64569b8ddc6d
 
 build:
   number: 0
@@ -62,7 +62,7 @@ test:
   commands:
     - python -m pip check
     - ansible-runner --version
-    - ansible-runner --version | grep -iE "{{ version.replace('.', '\.') }}" 
+    - ansible-runner --version | grep -iE "{{ version.replace('.', '\.') }}"
     - ansible-runner --help
     - cd src
     - coverage run --source=ansible_runner --branch -m pytest test/unit -vv -k "not ({{ ' or '.join(skips) }})"
