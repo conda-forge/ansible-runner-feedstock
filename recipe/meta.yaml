@@ -5,11 +5,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/a/ansible-runner/ansible-runner-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/a/ansible-runner/ansible-runner-{{ version }}.tar.gz
   sha256: 82d02b2548830f37a53517b65c823c4af371069406c7d213b5c9041d45e0c5b6
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: |
     {{ PYTHON }} -m pip install . -vv --no-build-isolation --no-deps
@@ -19,14 +19,14 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.9
+    - python {{ python_min }}
     - setuptools >=45,<=69.0.2
     - setuptools_scm >=6.2,<=8.0
   run:
     - importlib-metadata >=4.6
     - packaging
     - pexpect >=4.5
-    - python >=3.9
+    - python >={{ python_min }}
     - python-daemon
     - pyyaml
 
@@ -52,6 +52,7 @@ test:
     - pytest
     - pytest-timeout
     - pytest-mock
+    - python {{ python_min }}
   imports:
     - ansible_runner
   commands:
