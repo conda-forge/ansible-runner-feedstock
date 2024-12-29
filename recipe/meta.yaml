@@ -11,8 +11,8 @@ source:
 build:
   number: 1
   noarch: python
-  script: |
-    {{ PYTHON }} -m pip install . -vv --no-build-isolation --no-deps
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-build-isolation --no-deps --disable-pip-version-check
   entry_points:
     - ansible-runner = ansible_runner.__main__:main
 
