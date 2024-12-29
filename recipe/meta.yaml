@@ -53,6 +53,10 @@ test:
     - pytest-timeout
     - pytest-mock
     - python {{ python_min }}
+    # undeclared upstream
+    - importlib-resources
+    # overly-tight first-party pin for 3.9, ignoring for now
+    - importlib-metadata >=4.6,<6.3
   imports:
     - ansible_runner
   commands:
