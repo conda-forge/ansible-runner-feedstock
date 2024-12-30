@@ -1,0 +1,3 @@
+python_min:
+  # technically 3.9, but this activates many tight pins 
+  - "3.10"
