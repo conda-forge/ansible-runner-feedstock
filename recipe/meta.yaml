@@ -45,7 +45,7 @@ test:
     - test
   requires:
     - ansible
-    - ansible-core
+    - ansible-core 
     - coverage
     - m2-grep  # [win]
     - pip
@@ -54,7 +54,7 @@ test:
     - pytest-mock
     - python {{ python_min }}
     # undeclared upstream
-    - importlib-resources
+    - importlib-resources >=5.0,<5.1
     # overly-tight first-party pin for 3.9, ignoring for now
     - importlib-metadata >=4.6,<6.3
   imports:
