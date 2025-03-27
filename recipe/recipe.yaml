@@ -62,7 +62,7 @@ tests:
     script:
       - ansible-runner --version
       - ansible-runner --help
-      - ansible-runner --version | grep -iE {{ version | replace('.', '\\.') }}
+      - ansible-runner --version | grep -iE "${{ version | replace('.', '\\.') }}"
       - python run_test.py
 
 about:
