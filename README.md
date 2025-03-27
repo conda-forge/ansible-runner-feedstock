@@ -13,8 +13,7 @@ interface, as a standalone tool, or as a Python module that can be
 imported. The goal is to provide a stable and consistent interface
 abstraction to Ansible.
 
-
-Documentation: https://ansible-runner.readthedocs.io
+Documentation: https://ansible-runner.readthedocs.io/
 
 Current build status
 ====================
