@@ -25,10 +25,9 @@ requirements:
   host:
     - pip
     - python ${{ python_min }}.*
-    - setuptools >=45,<=69.0.2
-    - setuptools_scm >=6.2,<=8.0
+    - setuptools >=45,<=70.0.0
+    - setuptools_scm >=6.2,<=8.1.0
   run:
-    - importlib-metadata >=4.6
     - packaging
     - pexpect >=4.5
     - python >=${{ python_min }}
@@ -41,7 +40,7 @@ tests:
       pip_check: true
       python_version:
         - ${{ python_min }}.*
-        - 3.13.*
+        - 3.14.*
   - files:
       source:
         - test/
@@ -56,9 +55,6 @@ tests:
         - pytest-mock
         - pytest-timeout
         - python ${{ python_min }}.*
-        - if: win
-          then:
-            - m2-grep
     script:
       - ansible-runner --version
       - ansible-runner --help
