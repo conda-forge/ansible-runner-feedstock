@@ -26,7 +26,7 @@ requirements:
     - pip
     - python ${{ python_min }}.*
     - setuptools >=45,<=70.0.0
-    - setuptools_scm >=6.2,<=8.1.0
+    - setuptools-scm >=6.2,<=8.1.0
   run:
     - packaging
     - pexpect >=4.5
