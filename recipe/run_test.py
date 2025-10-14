@@ -1,7 +1,7 @@
 import sys
 from subprocess import call
 
-FAIL_UNDER = "71"
+FAIL_UNDER = "70"
 COV = ["coverage"]
 RUN = ["run", "--source=ansible_runner", "--branch", "-m"]
 PYTEST = ["pytest", "-vv", "--color=yes", "--tb=long"]

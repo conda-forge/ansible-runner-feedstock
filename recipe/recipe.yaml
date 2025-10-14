@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "2.4.1"
+  version: "2.4.2"
 
 package:
   name: ansible-runner
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/a/ansible-runner/ansible_runner-${{ version }}.tar.gz
-  sha256: 11d717da4dd8d93d56703a4a98e5f2154026a7ed1b46d9930902b8298dc67d09
+  sha256: 331d4da8d784e5a76aa9356981c0255f4bb1ba640736efe84b0bd7c73a4ca420
 
 build:
   number: 0
@@ -25,10 +25,9 @@ requirements:
   host:
     - pip
     - python ${{ python_min }}.*
-    - setuptools >=45,<=69.0.2
-    - setuptools_scm >=6.2,<=8.0
+    - setuptools >=45,<=70.0.0
+    - setuptools-scm >=6.2,<=8.1.0
   run:
-    - importlib-metadata >=4.6
     - packaging
     - pexpect >=4.5
     - python >=${{ python_min }}
@@ -41,7 +40,7 @@ tests:
       pip_check: true
       python_version:
         - ${{ python_min }}.*
-        - 3.13.*
+        - 3.14.*
   - files:
       source:
         - test/
@@ -56,9 +55,6 @@ tests:
         - pytest-mock
         - pytest-timeout
         - python ${{ python_min }}.*
-        - if: win
-          then:
-            - m2-grep
     script:
       - ansible-runner --version
       - ansible-runner --help
