@@ -3,6 +3,7 @@ schema_version: 1
 
 context:
   version: "2.4.3"
+  python_check_max: "3.14"
 
 package:
   name: ansible-runner
@@ -40,7 +41,7 @@ tests:
       pip_check: true
       python_version:
         - ${{ python_min }}.*
-        - 3.14.*
+        - ${{ python_check_max }}.*
   - files:
       source:
         - test/
@@ -70,9 +71,8 @@ about:
     interface, as a standalone tool, or as a Python module that can be
     imported. The goal is to provide a stable and consistent interface
     abstraction to Ansible.
-
-
-  homepage: https://github.com/ansible/ansible-runner
+  homepage: https://pypi.org/project/ansible-runner
+  repository: https://github.com/ansible/ansible-runner
   documentation: https://ansible-runner.readthedocs.io
 
 extra:
