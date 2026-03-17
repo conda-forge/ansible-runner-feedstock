@@ -3,7 +3,7 @@ About ansible-runner-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ansible-runner-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/ansible/ansible-runner
+Home: https://pypi.org/project/ansible-runner
 
 Package license: Apache-2.0
 
@@ -12,6 +12,8 @@ or as part of another system whether that be through a container image
 interface, as a standalone tool, or as a Python module that can be
 imported. The goal is to provide a stable and consistent interface
 abstraction to Ansible.
+
+Development: https://github.com/ansible/ansible-runner
 
 Documentation: https://ansible-runner.readthedocs.io/
 
