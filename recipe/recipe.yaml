@@ -2,7 +2,8 @@
 schema_version: 1
 
 context:
-  version: "2.4.2"
+  version: "2.4.3"
+  python_check_max: "3.14"
 
 package:
   name: ansible-runner
@@ -10,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/a/ansible-runner/ansible_runner-${{ version }}.tar.gz
-  sha256: 331d4da8d784e5a76aa9356981c0255f4bb1ba640736efe84b0bd7c73a4ca420
+  sha256: 5f3025529bb968fdc3b627457dd8d418dbf9d53bc73735d50e69c28544d53031
 
 build:
   number: 0
@@ -40,7 +41,7 @@ tests:
       pip_check: true
       python_version:
         - ${{ python_min }}.*
-        - 3.14.*
+        - ${{ python_check_max }}.*
   - files:
       source:
         - test/
@@ -70,9 +71,8 @@ about:
     interface, as a standalone tool, or as a Python module that can be
     imported. The goal is to provide a stable and consistent interface
     abstraction to Ansible.
-
-
-  homepage: https://github.com/ansible/ansible-runner
+  homepage: https://pypi.org/project/ansible-runner
+  repository: https://github.com/ansible/ansible-runner
   documentation: https://ansible-runner.readthedocs.io
 
 extra:
